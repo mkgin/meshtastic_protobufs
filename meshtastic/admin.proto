@@ -342,7 +342,29 @@ message AdminMessage {
      * Tell the node to reset the nodedb.
      */
     int32 nodedb_reset = 100;
+    /*
+     * Tell send a ButtonEvent to the node ButtonThread
+     */
+    ButtonEvent button_event = 191;
   }
+}
+
+
+/*
+ * Button event
+ */
+message ButtonEvent
+{
+  enum Type {
+        BUTTON_EVENT_NONE = 0;
+        BUTTON_EVENT_PRESSED = 1;
+        BUTTON_EVENT_DOUBLE_PRESSED = 2;
+        BUTTON_EVENT_MULTI_PRESSED = 3;
+        BUTTON_EVENT_LONG_PRESSED = 4;
+        BUTTON_EVENT_LONG_RELEASED = 5;
+        BUTTON_EVENT_TOUCH_LONG_PRESSED = 6;
+  };
+  int32 type = 1;
 }
 
 /*
@@ -381,3 +403,5 @@ message NodeRemoteHardwarePinsResponse {
    */
   repeated NodeRemoteHardwarePin node_remote_hardware_pins = 1;
 }
+
+
